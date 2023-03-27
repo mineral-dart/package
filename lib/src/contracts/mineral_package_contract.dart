@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:mineral_ioc/ioc.dart';
 
-import '../../contracts.dart';
+import '../../mineral_contracts.dart';
 
 abstract class MineralPackageContract extends MineralService {
   /// Root [Directory] of your project
