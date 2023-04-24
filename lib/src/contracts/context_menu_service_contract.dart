@@ -1,3 +1,5 @@
+abstract class MineralContextMenuContract<T> {}
+
 abstract class ContextMenuServiceContract<T> {
-  Future<void> handle (T event);
+  void register (List<MineralContextMenuContract<T>> contextMenus);
 }

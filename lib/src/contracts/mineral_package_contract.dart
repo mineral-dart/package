@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'package:mineral_contract/src/exceptions/unknown_service_exception.dart';
 import 'package:mineral_ioc/ioc.dart';
+import 'package:collection/collection.dart';
 
 import '../../mineral_contract.dart';
 
@@ -18,21 +20,30 @@ abstract class MineralPackageContract extends MineralService {
   /// Package description
   String get description => _description;
 
-  EventServiceContract get events => ioc.services.entries
-    .firstWhere((service) => service.key.toString() == 'EventService')
-    .value as EventServiceContract;
+  EventServiceContract get events => _findService<EventServiceContract>('EventService');
 
-  CommandServiceContract get commands => ioc.services.entries
-    .firstWhere((service) => service.key.toString() == 'CommandService')
-    .value as CommandServiceContract;
+  CommandServiceContract get commands => _findService<CommandServiceContract>('CommandService');
 
-  SharedStateServiceContract get states => ioc.services.entries
-    .firstWhere((service) => service.key.toString() == 'SharedStateService')
-    .value as SharedStateServiceContract;
+  SharedStateServiceContract get states => _findService<SharedStateServiceContract>('SharedStateService');
 
-  ContextMenuServiceContract get contextMenus => ioc.services.entries
-    .firstWhere((service) => service.key.toString() == 'ContextMenuService')
-    .value as ContextMenuServiceContract;
+  ContextMenuServiceContract get contextMenus => _findService<ContextMenuServiceContract>('ContextMenuService');
+
+  EnvironmentServiceContract get environment => _findService<EnvironmentServiceContract>('EnvironmentService');
+
+  ConsoleServiceContract get console => _findService<ConsoleServiceContract>('ConsoleService');
+
+  T _findService<T> (String service) {
+    final targetService = ioc.services.entries
+      .firstWhereOrNull((element) => element.key.toString() == service);
+
+    if (targetService == null) {
+      throw UnknownServiceException(service);
+    }
+
+    return targetService.value as T;
+  }
+
+  List<CliCommandContract> injectCommands () => [];
 
   Future<void> init ();
 }
