@@ -1,3 +1,6 @@
+## 1.5.0
+- Implement component entities
+
 ## 1.4.0
 - Add some contracts
 

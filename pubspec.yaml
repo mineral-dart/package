@@ -1,6 +1,6 @@
 name: mineral_contract
 description: Develop your own packages thanks to this base offering you access to Mineral's core contracts
-version: 1.4.0
+version: 1.5.0
 
 repository: https://github.com/mineral-dart/package
 # homepage: https://www.example.com

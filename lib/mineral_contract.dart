@@ -9,3 +9,4 @@ export 'src/contracts/context_menu_service_contract.dart';
 export 'src/contracts/environment_service_contract.dart';
 export 'src/contracts/console_service_contract.dart';
 export 'src/contracts/cli_service_contract.dart';
+export 'src/contracts/component_service_contract.dart';

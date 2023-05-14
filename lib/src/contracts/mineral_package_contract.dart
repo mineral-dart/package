@@ -4,6 +4,7 @@ import 'package:mineral_ioc/ioc.dart';
 import 'package:collection/collection.dart';
 
 import '../../mineral_contract.dart';
+import 'cli_service_contract.dart';
 
 abstract class MineralPackageContract extends MineralService {
   /// Root [Directory] of your project
@@ -31,6 +32,8 @@ abstract class MineralPackageContract extends MineralService {
   EnvironmentServiceContract get environment => _findService<EnvironmentServiceContract>('EnvironmentService');
 
   ConsoleServiceContract get console => _findService<ConsoleServiceContract>('ConsoleService');
+
+  ComponentServiceContract get components => _findService<ComponentServiceContract>('ComponentService');
 
   T _findService<T> (String service) {
     final targetService = ioc.services.entries
