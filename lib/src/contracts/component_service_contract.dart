@@ -8,4 +8,5 @@ abstract class InteractiveComponentContract<T, I> {
 
 abstract class ComponentServiceContract extends MineralService {
   T get<T extends InteractiveComponentContract>();
+  void register (List<InteractiveComponentContract> components);
 }

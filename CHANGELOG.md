@@ -1,4 +1,7 @@
 ## 1.5.0
+- Add method to register components
+
+## 5.0
 - Implement component entities
 
 ## 1.4.0
